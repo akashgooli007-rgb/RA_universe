@@ -159,7 +159,7 @@ footer{
 <a href="#wishes">Blessings</a>
 </nav>
 
-<!-- MUSIC (Autoplay + 40% volume) -->
+<!-- MUSIC -->
 <audio id="music" autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -209,7 +209,8 @@ Lunch 12:30 PM
 
 <br><br>
 
-<a class="btn" href="https://maps.google.com">Venue Map</a>
+<!-- UPDATED MAP LINK -->
+<a class="btn" href="https://maps.app.goo.gl/GRhfT4Cz4m8d7vFd9" target="_blank">Venue Map</a>
 <a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
 
 </div>
@@ -228,7 +229,6 @@ Lunch 12:30 PM
 </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'">
 <img id="lightimg">
 </div>
@@ -249,7 +249,6 @@ Made with ❤️ by Akash & Ramya
 
 <script>
 
-/* Set music volume to 40% */
 document.getElementById("music").volume = 0.4;
 
 /* TYPEWRITER */
@@ -264,29 +263,24 @@ let i=0;
 
 /* COUNTDOWN */
 const d=new Date("April 6, 2026 10:34:00").getTime();
-
 setInterval(()=>{
- let n=new Date().getTime(),
- diff=d-n;
-
+ let n=new Date().getTime(), diff=d-n;
  let day=Math.floor(diff/(1000*60*60*24));
  let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
  let min=Math.floor((diff%(1000*60*60))/(1000*60));
-
  countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
 },1000);
 
-/* PETALS (reduced) */
+/* PETALS */
 for(let i=0;i<6;i++){
  let p=document.createElement("div");
- p.className="petal";
- p.innerHTML="🌸";
+ p.className="petal"; p.innerHTML="🌸";
  p.style.left=Math.random()*100+"vw";
  p.style.animationDuration=(4+Math.random()*5)+"s";
  document.body.appendChild(p);
 }
 
-/* MUSIC TOGGLE */
+/* MUSIC */
 function toggleMusic(){
  let m=document.getElementById("music");
  m.paused?m.play():m.pause();
@@ -298,16 +292,12 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* WISHES TO GOOGLE SHEET */
+/* WISHES */
 function sendWish(){
  fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
  method:"POST",
- body:JSON.stringify({
-  name:name.value,
-  message:msg.value
- })
+ body:JSON.stringify({name:name.value,message:msg.value})
  });
-
  alert("Thank you for your blessings ❤️");
 }
 
