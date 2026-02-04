@@ -8,154 +8,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 body{
-  font-family:Poppins, sans-serif;
+  font-family:Poppins;
   background:linear-gradient(135deg,#fff5f8,#fffaf2);
-  color:#333;
   overflow-x:hidden;
+  color:#333;
 }
-
-/* NAV */
 nav{
   position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
+  top:0;width:100%;
+  display:flex;justify-content:center;
   gap:25px;
   padding:15px;
-  background:rgba(255,255,255,.8);
+  background:rgba(255,255,255,.7);
   backdrop-filter:blur(10px);
-  z-index:999;
+  z-index:99;
 }
-nav a{
-  text-decoration:none;
-  color:#b76e79;
-  font-weight:500;
+nav a{color:#b76e79;text-decoration:none;font-weight:500}
+
+section{padding:100px 20px;text-align:center}
+
+h1,h2,h3{font-family:'Playfair Display'}
+
+.glass{
+  max-width:850px;margin:auto;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(14px);
+  padding:35px;border-radius:25px;
+  box-shadow:0 10px 40px rgba(0,0,0,.12);
 }
 
 /* HERO */
 .hero{
   height:100vh;
-  background:url("photos/cover.jpg") center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  position:relative;
+  background:url("photos/cover.jpg") center/cover;
+  display:flex;align-items:center;justify-content:center;
+  color:white;text-align:center;position:relative
 }
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.55);
-}
-.hero-content{
-  z-index:2;
-  text-align:center;
-}
-.hero h1{
-  font-family:'Playfair Display';
-  font-size:65px;
-}
-#countdown{
-  margin-top:10px;
-  font-size:20px;
-}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.hero-content{z-index:2}
+.hero h1{font-size:65px}
 
-/* SECTIONS */
-section{
-  padding:100px 20px;
-  text-align:center;
-}
-
-.glass{
-  max-width:850px;
-  margin:auto;
-  background:rgba(255,255,255,.8);
-  backdrop-filter:blur(14px);
-  padding:35px;
-  border-radius:25px;
-  box-shadow:0 10px 40px rgba(0,0,0,.12);
-}
-
+/* BUTTON */
 .btn{
-  display:inline-block;
-  background:#b76e79;
-  color:white;
-  padding:12px 30px;
-  border-radius:30px;
-  text-decoration:none;
-  margin:8px;
+  background:#b76e79;color:white;
+  padding:12px 30px;border-radius:30px;
+  display:inline-block;margin:8px;text-decoration:none
 }
 
-/* GALLERY */
-.slider{
-  display:flex;
-  overflow-x:auto;
-}
+/* SLIDER */
+.slider{display:flex;overflow-x:auto}
 .slider img{
-  height:250px;
-  margin:10px;
-  border-radius:20px;
-  cursor:pointer;
-  transition:.3s;
+  height:250px;margin:10px;border-radius:20px;
+  cursor:pointer;transition:.3s
 }
-.slider img:hover{
-  transform:scale(1.08);
-}
+.slider img:hover{transform:scale(1.08)}
 
 /* LIGHTBOX */
 #lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  justify-content:center;
-  align-items:center;
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;align-items:center
 }
-#lightbox img{
-  max-height:90%;
-}
+#lightbox img{max-height:85%}
 
 /* PETALS */
-.petal{
-  position:fixed;
-  top:-10px;
-  font-size:18px;
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
-}
+.petal{position:fixed;top:-10px;font-size:18px;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
 
 /* MUSIC BUTTON */
 .music-btn{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:55px;
-  height:55px;
-  border:none;
-  border-radius:50%;
-  background:#b76e79;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
+  position:fixed;bottom:20px;right:20px;
+  background:#b76e79;color:white;border:none;
+  width:55px;height:55px;border-radius:50%;font-size:20px
 }
 
-/* FOOTER */
-footer{
-  background:#b76e79;
-  color:white;
-  padding:30px;
-}
+footer{background:#b76e79;color:white;padding:35px}
 </style>
 </head>
 
@@ -169,9 +98,8 @@ footer{
 </nav>
 
 <audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <!-- HERO -->
@@ -188,10 +116,10 @@ footer{
 <section id="story">
 <div class="glass">
 <h2>Our Story</h2>
-What began as a simple hello turned into endless smiles and laughter.  
-Somewhere between conversations and memories, we realized we were meant for each other.  
-<br><br>
-<b>And one beautiful day… She Said YES 💍</b>
+What began as a simple hello turned into endless smiles,
+comfort and love. With family blessings and destiny’s magic,
+we discovered we were meant for each other.
+<br><br><b>And one beautiful day… She Said YES 💍</b>
 </div>
 </section>
 
@@ -199,19 +127,12 @@ Somewhere between conversations and memories, we realized we were meant for each
 <section id="events">
 <div class="glass">
 <h2>Wedding Events</h2>
-
 <h3>🌼 Reception</h3>
-April 5th – 6:30 PM onwards<br>
-Dinner – 7:30 PM onwards
-
+April 5 • 6:30 PM<br>Dinner 7:30 PM
 <br><br>
-
 <h3>💒 Wedding</h3>
-April 6th – 10:34 AM onwards<br>
-Lunch – 12:30 PM onwards
-
+April 6 • 10:34 AM<br>Lunch 12:30 PM
 <br><br>
-
 <a class="btn" href="https://maps.google.com">Venue Map</a>
 <a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
 </div>
@@ -230,6 +151,7 @@ Lunch – 12:30 PM onwards
 </div>
 </section>
 
+<!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'">
 <img id="lightimg">
 </div>
@@ -238,10 +160,8 @@ Lunch – 12:30 PM onwards
 <section id="wishes">
 <div class="glass">
 <h2>Send Your Blessings ❤️</h2>
-
-<input id="guestName" placeholder="Your Name" style="padding:10px;width:80%;border-radius:10px"><br><br>
-<textarea id="guestMessage" placeholder="Your Message" style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
-
+<input id="name" placeholder="Your Name"><br><br>
+<textarea id="msg" placeholder="Your message"></textarea><br><br>
 <button class="btn" onclick="sendWish()">Send Wish</button>
 </div>
 </section>
@@ -253,31 +173,24 @@ Made with ❤️ by Akash & Ramya
 <script>
 
 /* TYPEWRITER */
-const text="She Said Yes 💍";
+const t="She Said Yes 💍";
 let i=0;
-(function type(){
-  if(i<text.length){
-    document.getElementById("type").innerHTML+=text[i++];
-    setTimeout(type,80);
-  }
-})();
+(function type(){ if(i<t.length){ document.getElementById("type").innerHTML+=t[i++]; setTimeout(type,80)}})();
 
 /* COUNTDOWN */
-const date=new Date("April 6, 2026 10:34:00").getTime();
+const d=new Date("April 6, 2026 10:34:00").getTime();
 setInterval(()=>{
- let now=new Date().getTime();
- let diff=date-now;
- let d=Math.floor(diff/(1000*60*60*24));
- let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
- let m=Math.floor((diff%(1000*60*60))/(1000*60));
- countdown.innerHTML=d+" days "+h+" hrs "+m+" mins left";
+ let n=new Date().getTime(), diff=d-n;
+ let day=Math.floor(diff/(1000*60*60*24));
+ let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+ let min=Math.floor((diff%(1000*60*60))/(1000*60));
+ countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
 },1000);
 
 /* PETALS */
 for(let i=0;i<25;i++){
  let p=document.createElement("div");
- p.className="petal";
- p.innerHTML="🌸";
+ p.className="petal"; p.innerHTML="🌸";
  p.style.left=Math.random()*100+"vw";
  p.style.animationDuration=(4+Math.random()*5)+"s";
  document.body.appendChild(p);
@@ -285,8 +198,8 @@ for(let i=0;i<25;i++){
 
 /* MUSIC */
 function toggleMusic(){
- const m=document.getElementById("music");
- m.paused ? m.play() : m.pause();
+ let m=document.getElementById("music");
+ m.paused?m.play():m.pause();
 }
 
 /* LIGHTBOX */
@@ -295,30 +208,30 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* SAVE WISHES */
+/* WISHES TO GOOGLE SHEET */
 function sendWish(){
-
- const name=document.getElementById("guestName").value;
- const message=document.getElementById("guestMessage").value;
-
- if(!name || !message){
-   alert("Please fill both fields ❤️");
-   return;
- }
-
  fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
-   method:"POST",
-   body:JSON.stringify({ name:name, message:message })
+ method:"POST",
+ body:JSON.stringify({
+ name:name.value,
+ message:msg.value
+ })
  });
-
  alert("Thank you for your blessings ❤️");
-
- guestName.value="";
- guestMessage.value="";
 }
+
+/* CONFETTI */
+setTimeout(()=>{for(let i=0;i<50;i++){
+ let c=document.createElement("div");
+ c.style.position="fixed";
+ c.style.left=Math.random()*100+"vw";
+ c.style.top="-10px";
+ c.innerHTML="✨";
+ c.style.animation="fall 3s linear";
+ document.body.appendChild(c);
+}},500);
 
 </script>
 
 </body>
 </html>
-
