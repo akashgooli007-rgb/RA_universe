@@ -8,8 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* ========== GLOBAL ========== */
 *{
   margin:0;
   padding:0;
@@ -24,16 +22,7 @@ body{
   overflow-x:hidden;
 }
 
-h1,h2,h3{
-  font-family:'Playfair Display', serif;
-}
-
-section{
-  padding:100px 20px;
-  text-align:center;
-}
-
-/* ========== NAVBAR ========== */
+/* NAV */
 nav{
   position:fixed;
   top:0;
@@ -42,59 +31,60 @@ nav{
   justify-content:center;
   gap:25px;
   padding:15px;
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.8);
   backdrop-filter:blur(10px);
   z-index:999;
 }
-
 nav a{
   text-decoration:none;
   color:#b76e79;
   font-weight:500;
 }
 
-/* ========== HERO ========== */
+/* HERO */
 .hero{
   height:100vh;
   background:url("photos/cover.jpg") center/cover no-repeat;
   display:flex;
   justify-content:center;
   align-items:center;
-  position:relative;
   color:white;
+  position:relative;
 }
-
 .overlay{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.55);
 }
-
 .hero-content{
   z-index:2;
+  text-align:center;
 }
-
 .hero h1{
+  font-family:'Playfair Display';
   font-size:65px;
 }
-
 #countdown{
-  margin-top:15px;
+  margin-top:10px;
   font-size:20px;
 }
 
-/* ========== GLASS CARD ========== */
+/* SECTIONS */
+section{
+  padding:100px 20px;
+  text-align:center;
+}
+
 .glass{
   max-width:850px;
   margin:auto;
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.8);
   backdrop-filter:blur(14px);
   padding:35px;
   border-radius:25px;
   box-shadow:0 10px 40px rgba(0,0,0,.12);
 }
 
-/* ========== BUTTON ========== */
 .btn{
   display:inline-block;
   background:#b76e79;
@@ -105,25 +95,23 @@ nav a{
   margin:8px;
 }
 
-/* ========== GALLERY SLIDER ========== */
+/* GALLERY */
 .slider{
   display:flex;
   overflow-x:auto;
 }
-
 .slider img{
   height:250px;
-  border-radius:20px;
   margin:10px;
+  border-radius:20px;
   cursor:pointer;
   transition:.3s;
 }
-
 .slider img:hover{
   transform:scale(1.08);
 }
 
-/* ========== LIGHTBOX ========== */
+/* LIGHTBOX */
 #lightbox{
   display:none;
   position:fixed;
@@ -132,24 +120,22 @@ nav a{
   justify-content:center;
   align-items:center;
 }
-
 #lightbox img{
   max-height:90%;
 }
 
-/* ========== PETALS ========== */
+/* PETALS */
 .petal{
   position:fixed;
   top:-10px;
   font-size:18px;
   animation:fall linear infinite;
 }
-
 @keyframes fall{
-  to{ transform:translateY(110vh) rotate(360deg); }
+  to{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* ========== MUSIC BUTTON ========== */
+/* MUSIC BUTTON */
 .music-btn{
   position:fixed;
   right:20px;
@@ -161,21 +147,20 @@ nav a{
   background:#b76e79;
   color:white;
   font-size:20px;
+  cursor:pointer;
 }
 
-/* ========== FOOTER ========== */
+/* FOOTER */
 footer{
   background:#b76e79;
   color:white;
-  padding:35px;
+  padding:30px;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
 <a href="#story">Story</a>
 <a href="#events">Events</a>
@@ -183,16 +168,15 @@ footer{
 <a href="#wishes">Blessings</a>
 </nav>
 
-<!-- MUSIC -->
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <!-- HERO -->
 <section class="hero">
 <div class="overlay"></div>
-
 <div class="hero-content">
 <h1 id="type"></h1>
 <h2>Akash ❤️ Ramya</h2>
@@ -204,8 +188,8 @@ footer{
 <section id="story">
 <div class="glass">
 <h2>Our Story</h2>
-What began as a simple hello turned into endless smiles, long conversations and warm comfort.  
-With family blessings and destiny’s magic, we realized we were truly meant for each other.  
+What began as a simple hello turned into endless smiles and laughter.  
+Somewhere between conversations and memories, we realized we were meant for each other.  
 <br><br>
 <b>And one beautiful day… She Said YES 💍</b>
 </div>
@@ -217,20 +201,19 @@ With family blessings and destiny’s magic, we realized we were truly meant for
 <h2>Wedding Events</h2>
 
 <h3>🌼 Reception</h3>
-April 5th – 6:30 PM onwards  
+April 5th – 6:30 PM onwards<br>
 Dinner – 7:30 PM onwards
 
 <br><br>
 
 <h3>💒 Wedding</h3>
-April 6th – 10:34 AM onwards  
+April 6th – 10:34 AM onwards<br>
 Lunch – 12:30 PM onwards
 
 <br><br>
 
 <a class="btn" href="https://maps.google.com">Venue Map</a>
 <a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
-
 </div>
 </section>
 
@@ -247,25 +230,19 @@ Lunch – 12:30 PM onwards
 </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'">
 <img id="lightimg">
 </div>
 
-<!-- WISHES (FIXED NAME ISSUE) -->
+<!-- WISHES -->
 <section id="wishes">
 <div class="glass">
-
 <h2>Send Your Blessings ❤️</h2>
 
-<input id="guestName" placeholder="Your Name"
-style="padding:10px;width:80%;border-radius:10px"><br><br>
-
-<textarea id="guestMessage" placeholder="Your Message"
-style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
+<input id="guestName" placeholder="Your Name" style="padding:10px;width:80%;border-radius:10px"><br><br>
+<textarea id="guestMessage" placeholder="Your Message" style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
 
 <button class="btn" onclick="sendWish()">Send Wish</button>
-
 </div>
 </section>
 
@@ -318,7 +295,7 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* WISHES SAVE (FIXED) */
+/* SAVE WISHES */
 function sendWish(){
 
  const name=document.getElementById("guestName").value;
@@ -329,7 +306,7 @@ function sendWish(){
    return;
  }
 
- fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL",{
+ fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
    method:"POST",
    body:JSON.stringify({ name:name, message:message })
  });
@@ -344,3 +321,4 @@ function sendWish(){
 
 </body>
 </html>
+
