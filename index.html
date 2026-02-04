@@ -1,230 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Akash ❤️ Ramya Wedding</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-
-body{
-  font-family:Poppins;
-  background:linear-gradient(135deg,#fff5f8,#fffaf2);
-  overflow-x:hidden;
-  color:#333;
-}
-
-/* NAV */
-nav{
-  position:fixed;
-  top:0;width:100%;
-  display:flex;justify-content:center;
-  gap:25px;
-  padding:15px;
-  background:rgba(255,255,255,.7);
-  backdrop-filter:blur(10px);
-  z-index:99;
-}
-nav a{color:#b76e79;text-decoration:none;font-weight:500}
-
-section{padding:100px 20px;text-align:center}
-h1,h2,h3{font-family:'Playfair Display'}
-
-/* GLASS */
-.glass{
-  max-width:850px;margin:auto;
-  background:rgba(255,255,255,.7);
-  backdrop-filter:blur(14px);
-  padding:35px;border-radius:25px;
-  box-shadow:0 10px 40px rgba(0,0,0,.12);
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  background:url("photos/cover.jpg") center/cover;
-  display:flex;align-items:center;justify-content:center;
-  color:white;text-align:center;position:relative
-}
-.overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.hero-content{z-index:2}
-.hero h1{font-size:65px}
-
-/* BUTTON */
-.btn{
-  background:#b76e79;color:white;
-  padding:12px 30px;border-radius:30px;
-  display:inline-block;margin:8px;text-decoration:none;
-  border:none;cursor:pointer
-}
-.btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-/* GALLERY */
-.slider{display:flex;overflow-x:auto}
-.slider img{
-  height:250px;margin:10px;border-radius:20px;
-  cursor:pointer;transition:.3s
-}
-.slider img:hover{transform:scale(1.08)}
-
-/* LIGHTBOX */
-#lightbox{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.85);
-  justify-content:center;align-items:center
-}
-#lightbox img{max-height:85%}
-
-/* PETALS */
-.petal{
-  position:fixed;top:-10px;font-size:18px;
-  animation:fall linear infinite
-}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-
-/* MUSIC */
-.music-btn{
-  position:fixed;bottom:20px;right:20px;
-  background:#b76e79;color:white;border:none;
-  width:55px;height:55px;border-radius:50%;font-size:20px
-}
-
-/* WISH BOX */
-.wish-box{max-width:500px;margin:auto}
-.wish-box input,.wish-box textarea{
-  width:100%;padding:14px;margin:10px 0;
-  border-radius:12px;border:1px solid #eee;
-  font-family:Poppins;font-size:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,.05)
-}
-
-/* SUCCESS MESSAGE */
-.success-msg{
-  margin-top:12px;
-  color:#b76e79;
-  font-weight:500;
-  display:none;
-}
-
-/* SPINNER */
-.spinner{
-  border:3px solid #fff;
-  border-top:3px solid transparent;
-  border-radius:50%;
-  width:14px;height:14px;
-  display:inline-block;
-  animation:spin .8s linear infinite;
-  margin-left:6px;
-}
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-footer{background:#b76e79;color:white;padding:35px}
-</style>
-</head>
-
-<body>
-
-<nav>
-<a href="#story">Story</a>
-<a href="#events">Events</a>
-<a href="#gallery">Gallery</a>
-<a href="#wishes">Wishes</a>
-</nav>
-
-<!-- MUSIC -->
-<audio id="music" autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-<!-- HERO -->
-<section class="hero">
-<div class="overlay"></div>
-<div class="hero-content">
-<h1 id="type"></h1>
-<h2>Akash ❤️ Ramya</h2>
-<div id="countdown"></div>
-</div>
-</section>
-
-<!-- STORY -->
-<section id="story">
-<div class="glass">
-<h2>Our Story</h2>
-What began as a simple hello turned into endless smiles and love.
-<br><br>
-<b>She Said YES 💍</b>
-</div>
-</section>
-
-<!-- EVENTS -->
-<section id="events">
-<div class="glass">
-<h2>Wedding Events</h2>
-<p>📍 Sri Nijagunara Kshetra Kalyana Mantapa, Basavanagudi</p>
-
-<h3>🌼 Reception</h3>
-April 5 • 6:30 PM<br>Dinner 7:30 PM
-
-<br><br>
-
-<h3>💒 Wedding</h3>
-April 6 • 10:34 AM<br>Lunch 12:30 PM
-
-<br><br>
-
-<a class="btn" href="https://maps.app.goo.gl/GRhfT4Cz4m8d7vFd9" target="_blank">Venue Map</a>
-</div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-<h2>Memories</h2>
-<div class="slider">
-<img src="photos/1.jpg" onclick="openImg(this)">
-<img src="photos/2.jpg" onclick="openImg(this)">
-<img src="photos/3.jpg" onclick="openImg(this)">
-<img src="photos/4.jpg" onclick="openImg(this)">
-<img src="photos/6.jpg" onclick="openImg(this)">
-</div>
-</section>
-
-<div id="lightbox" onclick="this.style.display='none'">
-<img id="lightimg">
-</div>
-
-<!-- WISHES -->
-<section id="wishes">
-<div class="glass wish-box">
-<h2>Send Your Wishes ❤️</h2>
-
-<input id="name" placeholder="Your Name">
-<textarea id="msg" placeholder="Write your wishes..."></textarea>
-
-<button id="sendBtn" class="btn" onclick="sendWish()">Send Wish</button>
-<div id="success" class="success-msg">Thank you for your wishes ❤️</div>
-
-</div>
-</section>
-
-<footer>
-Made with ❤️ by Akash & Ramya
-</footer>
+<!-- ONLY SCRIPT SECTION UPDATED BELOW -->
 
 <script>
 
 /* music volume */
 document.getElementById("music").volume = 0.4;
 
-/* petals */
+
+/* ===== TYPEWRITER RESTORED ===== */
+const text="Akash ❤️ Ramya";
+let idx=0;
+
+(function type(){
+  if(idx<text.length){
+    document.getElementById("type").innerHTML+=text[idx++];
+    setTimeout(type,80);
+  }
+})();
+
+
+/* COUNTDOWN */
+const d=new Date("April 6, 2026 10:34:00").getTime();
+setInterval(()=>{
+ let diff=d-new Date().getTime();
+ let day=Math.floor(diff/(1000*60*60*24));
+ let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+ let min=Math.floor((diff%(1000*60*60))/(1000*60));
+ countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
+},1000);
+
+
+/* PETALS */
 for(let i=0;i<6;i++){
  let p=document.createElement("div");
  p.className="petal";
@@ -234,17 +39,20 @@ for(let i=0;i<6;i++){
  document.body.appendChild(p);
 }
 
-/* music toggle */
+
+/* MUSIC */
 function toggleMusic(){
  let m=document.getElementById("music");
  m.paused?m.play():m.pause();
 }
 
-/* lightbox */
+
+/* LIGHTBOX */
 function openImg(img){
  lightbox.style.display="flex";
  lightimg.src=img.src;
 }
+
 
 /* ===== IMPROVED WISH SUBMIT ===== */
 function sendWish(){
@@ -269,16 +77,12 @@ function sendWish(){
    document.getElementById("msg").value="";
 
    success.style.display="block";
-
    setTimeout(()=>success.style.display="none",3000);
 
    btn.disabled=false;
    btn.innerHTML="Send Wish";
-
  });
 
 }
-</script>
 
-</body>
-</html>
+</script>
