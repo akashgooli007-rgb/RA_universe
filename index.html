@@ -17,6 +17,7 @@ body{
   color:#333;
 }
 
+/* NAV */
 nav{
   position:fixed;
   top:0;width:100%;
@@ -41,6 +42,7 @@ section{
 
 h1,h2,h3{font-family:'Playfair Display'}
 
+/* GLASS CARD */
 .glass{
   max-width:850px;
   margin:auto;
@@ -55,97 +57,85 @@ h1,h2,h3{font-family:'Playfair Display'}
 .hero{
   height:100vh;
   background:url("photos/cover.jpg") center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  text-align:center;
-  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  color:white;text-align:center;position:relative
 }
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.5);
-}
-
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero-content{z-index:2}
-
 .hero h1{font-size:65px}
 
 /* BUTTON */
 .btn{
-  background:#b76e79;
-  color:white;
-  padding:12px 30px;
-  border-radius:30px;
-  display:inline-block;
-  margin:8px;
-  text-decoration:none;
+  background:#b76e79;color:white;
+  padding:12px 30px;border-radius:30px;
+  display:inline-block;margin:8px;text-decoration:none
 }
 
-/* SLIDER */
-.slider{
-  display:flex;
-  overflow-x:auto;
-}
-
+/* GALLERY */
+.slider{display:flex;overflow-x:auto}
 .slider img{
-  height:250px;
-  margin:10px;
-  border-radius:20px;
-  cursor:pointer;
-  transition:.3s;
+  height:250px;margin:10px;border-radius:20px;
+  cursor:pointer;transition:.3s
 }
-
-.slider img:hover{
-  transform:scale(1.08);
-}
+.slider img:hover{transform:scale(1.08)}
 
 /* LIGHTBOX */
 #lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
+  display:none;position:fixed;inset:0;
   background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
+  justify-content:center;align-items:center
 }
-
-#lightbox img{
-  max-height:85%;
-}
+#lightbox img{max-height:85%}
 
 /* PETALS */
 .petal{
   position:fixed;
   top:-10px;
   font-size:18px;
-  animation:fall linear infinite;
+  animation:fall linear infinite
 }
-
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg)}
-}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
 
 /* MUSIC BUTTON */
 .music-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#b76e79;
-  color:white;
-  border:none;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  font-size:20px;
+  position:fixed;bottom:20px;right:20px;
+  background:#b76e79;color:white;border:none;
+  width:55px;height:55px;border-radius:50%;font-size:20px
+}
+
+/* ===== CLASSY WISH BOX ===== */
+.wish-box{
+  max-width:500px;
+  margin:auto;
+}
+
+.wish-box input,
+.wish-box textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:12px;
+  border:1px solid #eee;
+  font-family:Poppins;
+  font-size:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+  outline:none;
+}
+
+.wish-box textarea{
+  min-height:110px;
+  resize:none;
+}
+
+.wish-box input:focus,
+.wish-box textarea:focus{
+  border-color:#b76e79;
 }
 
 footer{
   background:#b76e79;
   color:white;
-  padding:35px;
+  padding:35px
 }
 </style>
 </head>
@@ -163,7 +153,6 @@ footer{
 <audio id="music" autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <!-- HERO -->
@@ -194,24 +183,20 @@ we discovered we were meant for each other.
 <h2>Wedding Events</h2>
 
 <p style="margin-bottom:20px;font-weight:500;">
-📍 Venue: Sri Nijagunara Kshetra Kalyana Mantapa, Basavanagudi
+📍 Venue: :contentReference[oaicite:0]{index=0}, Basavanagudi
 </p>
 
 <h3>🌼 Reception</h3>
-April 5 • 6:30 PM<br>
-Dinner 7:30 PM
+April 5 • 6:30 PM<br>Dinner 7:30 PM
 
 <br><br>
 
 <h3>💒 Wedding</h3>
-April 6 • 10:34 AM<br>
-Lunch 12:30 PM
+April 6 • 10:34 AM<br>Lunch 12:30 PM
 
 <br><br>
 
-<!-- UPDATED MAP LINK -->
 <a class="btn" href="https://maps.app.goo.gl/GRhfT4Cz4m8d7vFd9" target="_blank">Venue Map</a>
-  
 </div>
 </section>
 
@@ -234,10 +219,12 @@ Lunch 12:30 PM
 
 <!-- WISHES -->
 <section id="wishes">
-<div class="glass">
+<div class="glass wish-box">
 <h2>Send Your Blessings ❤️</h2>
-<input id="name" placeholder="Your Name"><br><br>
-<textarea id="msg" placeholder="Your message"></textarea><br><br>
+
+<input id="name" placeholder="Your Name">
+<textarea id="msg" placeholder="Write your blessing..."></textarea>
+
 <button class="btn" onclick="sendWish()">Send Wish</button>
 </div>
 </section>
@@ -248,16 +235,17 @@ Made with ❤️ by Akash & Ramya
 
 <script>
 
+/* music volume */
 document.getElementById("music").volume = 0.4;
 
 /* TYPEWRITER */
 const t="She Said Yes 💍";
 let i=0;
 (function type(){
-  if(i<t.length){
-    document.getElementById("type").innerHTML+=t[i++];
-    setTimeout(type,80);
-  }
+ if(i<t.length){
+  document.getElementById("type").innerHTML+=t[i++];
+  setTimeout(type,80);
+ }
 })();
 
 /* COUNTDOWN */
@@ -270,10 +258,11 @@ setInterval(()=>{
  countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
 },1000);
 
-/* PETALS */
+/* FEWER PETALS */
 for(let i=0;i<6;i++){
  let p=document.createElement("div");
- p.className="petal"; p.innerHTML="🌸";
+ p.className="petal";
+ p.innerHTML="🌸";
  p.style.left=Math.random()*100+"vw";
  p.style.animationDuration=(4+Math.random()*5)+"s";
  document.body.appendChild(p);
@@ -291,7 +280,7 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* WISHES */
+/* SAVE WISHES */
 function sendWish(){
  fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
  method:"POST",
