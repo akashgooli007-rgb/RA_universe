@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Akash ❤️ Ramya Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* ========== GLOBAL ========== */
 *{
   margin:0;
   padding:0;
@@ -16,13 +18,22 @@
 }
 
 body{
-  font-family:Poppins;
-  background:linear-gradient(135deg,#fff7f9,#fffaf3);
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(135deg,#fff5f8,#fffaf2);
   color:#333;
   overflow-x:hidden;
 }
 
-/* ---------- NAV ---------- */
+h1,h2,h3{
+  font-family:'Playfair Display', serif;
+}
+
+section{
+  padding:100px 20px;
+  text-align:center;
+}
+
+/* ========== NAVBAR ========== */
 nav{
   position:fixed;
   top:0;
@@ -30,97 +41,89 @@ nav{
   display:flex;
   justify-content:center;
   gap:25px;
-  padding:14px;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:blur(8px);
+  padding:15px;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(10px);
   z-index:999;
 }
+
 nav a{
   text-decoration:none;
   color:#b76e79;
   font-weight:500;
 }
 
-/* ---------- HERO ---------- */
+/* ========== HERO ========== */
 .hero{
   height:100vh;
   background:url("photos/cover.jpg") center/cover no-repeat;
   display:flex;
   justify-content:center;
   align-items:center;
-  color:white;
   position:relative;
-  text-align:center;
+  color:white;
 }
+
 .overlay{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.55);
 }
+
 .hero-content{
   z-index:2;
 }
+
 .hero h1{
-  font-family:'Playfair Display';
-  font-size:60px;
+  font-size:65px;
 }
 
-/* ---------- SECTIONS ---------- */
-section{
-  padding:100px 20px;
+#countdown{
+  margin-top:15px;
+  font-size:20px;
 }
 
-/* smooth scroll reveal */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .9s ease;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ---------- GLASS CARD ---------- */
+/* ========== GLASS CARD ========== */
 .glass{
-  max-width:820px;
+  max-width:850px;
   margin:auto;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(14px);
   padding:35px;
-  border-radius:22px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  text-align:center;
+  border-radius:25px;
+  box-shadow:0 10px 40px rgba(0,0,0,.12);
 }
 
-/* ---------- BUTTON ---------- */
+/* ========== BUTTON ========== */
 .btn{
   display:inline-block;
   background:#b76e79;
   color:white;
-  padding:12px 28px;
-  border-radius:25px;
+  padding:12px 30px;
+  border-radius:30px;
   text-decoration:none;
   margin:8px;
 }
 
-/* ---------- GALLERY ---------- */
+/* ========== GALLERY SLIDER ========== */
 .slider{
   display:flex;
   overflow-x:auto;
 }
+
 .slider img{
-  height:230px;
+  height:250px;
+  border-radius:20px;
   margin:10px;
-  border-radius:18px;
   cursor:pointer;
   transition:.3s;
 }
+
 .slider img:hover{
-  transform:scale(1.06);
+  transform:scale(1.08);
 }
 
-/* ---------- LIGHTBOX ---------- */
+/* ========== LIGHTBOX ========== */
 #lightbox{
   display:none;
   position:fixed;
@@ -129,53 +132,50 @@ section{
   justify-content:center;
   align-items:center;
 }
-#lightbox img{ max-height:90%; }
 
-/* ---------- PETALS (reduced) ---------- */
+#lightbox img{
+  max-height:90%;
+}
+
+/* ========== PETALS ========== */
 .petal{
   position:fixed;
   top:-10px;
-  font-size:16px;
+  font-size:18px;
   animation:fall linear infinite;
 }
+
 @keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
+  to{ transform:translateY(110vh) rotate(360deg); }
 }
 
-/* ---------- MUSIC BUTTON ---------- */
+/* ========== MUSIC BUTTON ========== */
 .music-btn{
   position:fixed;
   right:20px;
   bottom:20px;
-  width:50px;
-  height:50px;
+  width:55px;
+  height:55px;
   border:none;
   border-radius:50%;
   background:#b76e79;
   color:white;
-  font-size:18px;
+  font-size:20px;
 }
 
-/* ---------- THANK YOU MESSAGE ---------- */
-#thanks{
-  margin-top:15px;
-  color:#b76e79;
-  font-weight:500;
-  display:none;
-}
-
-/* ---------- FOOTER ---------- */
+/* ========== FOOTER ========== */
 footer{
   background:#b76e79;
   color:white;
-  text-align:center;
-  padding:30px;
+  padding:35px;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
 <a href="#story">Story</a>
 <a href="#events">Events</a>
@@ -183,71 +183,88 @@ footer{
 <a href="#wishes">Blessings</a>
 </nav>
 
-<audio id="music" autoplay loop>
+<!-- MUSIC -->
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <!-- HERO -->
 <section class="hero">
 <div class="overlay"></div>
+
 <div class="hero-content">
 <h1 id="type"></h1>
 <h2>Akash ❤️ Ramya</h2>
-<p id="countdown"></p>
+<div id="countdown"></div>
 </div>
 </section>
 
 <!-- STORY -->
-<section id="story" class="reveal">
+<section id="story">
 <div class="glass">
 <h2>Our Story</h2>
-Two hearts met, shared laughter, built memories,
-and found home in each other.  
+What began as a simple hello turned into endless smiles, long conversations and warm comfort.  
+With family blessings and destiny’s magic, we realized we were truly meant for each other.  
 <br><br>
-<b>She Said YES 💍</b>
+<b>And one beautiful day… She Said YES 💍</b>
 </div>
 </section>
 
 <!-- EVENTS -->
-<section id="events" class="reveal">
+<section id="events">
 <div class="glass">
 <h2>Wedding Events</h2>
-Reception – April 5th, 6:30 PM onwards  
-<br>Dinner – 7:30 PM  
+
+<h3>🌼 Reception</h3>
+April 5th – 6:30 PM onwards  
+Dinner – 7:30 PM onwards
+
 <br><br>
-Wedding – April 6th, 10:34 AM  
-<br>Lunch – 12:30 PM
+
+<h3>💒 Wedding</h3>
+April 6th – 10:34 AM onwards  
+Lunch – 12:30 PM onwards
+
+<br><br>
+
+<a class="btn" href="https://maps.google.com">Venue Map</a>
+<a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
+
 </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="reveal">
-<h2 style="text-align:center;">Memories</h2>
+<section id="gallery">
+<h2>Memories</h2>
 <div class="slider">
 <img src="photos/1.jpg" onclick="openImg(this)">
 <img src="photos/2.jpg" onclick="openImg(this)">
 <img src="photos/3.jpg" onclick="openImg(this)">
 <img src="photos/4.jpg" onclick="openImg(this)">
+<img src="photos/5.jpg" onclick="openImg(this)">
+<img src="photos/6.jpg" onclick="openImg(this)">
 </div>
 </section>
 
+<!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'">
 <img id="lightimg">
 </div>
 
-<!-- WISHES -->
-<section id="wishes" class="reveal">
+<!-- WISHES (FIXED NAME ISSUE) -->
+<section id="wishes">
 <div class="glass">
+
 <h2>Send Your Blessings ❤️</h2>
 
-<input id="guestName" placeholder="Your Name" style="padding:10px;width:80%;border-radius:10px"><br><br>
-<textarea id="guestMessage" placeholder="Your Message" style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
+<input id="guestName" placeholder="Your Name"
+style="padding:10px;width:80%;border-radius:10px"><br><br>
+
+<textarea id="guestMessage" placeholder="Your Message"
+style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
 
 <button class="btn" onclick="sendWish()">Send Wish</button>
-
-<p id="thanks">Thank you for your blessings ❤️</p>
 
 </div>
 </section>
@@ -258,69 +275,71 @@ Made with ❤️ by Akash & Ramya
 
 <script>
 
-/* music volume */
-const music=document.getElementById("music");
-music.volume=0.4;
-
-/* typewriter */
-const t="She Said Yes 💍";
+/* TYPEWRITER */
+const text="She Said Yes 💍";
 let i=0;
-(function type(){ if(i<t.length){ typewriter.innerHTML+=t[i++]; setTimeout(type,70)}})();
+(function type(){
+  if(i<text.length){
+    document.getElementById("type").innerHTML+=text[i++];
+    setTimeout(type,80);
+  }
+})();
 
-/* countdown */
-const d=new Date("April 6, 2026 10:34:00").getTime();
+/* COUNTDOWN */
+const date=new Date("April 6, 2026 10:34:00").getTime();
 setInterval(()=>{
- let diff=d-new Date().getTime();
- let days=Math.floor(diff/86400000);
- countdown.innerHTML=days+" days to go";
+ let now=new Date().getTime();
+ let diff=date-now;
+ let d=Math.floor(diff/(1000*60*60*24));
+ let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+ let m=Math.floor((diff%(1000*60*60))/(1000*60));
+ countdown.innerHTML=d+" days "+h+" hrs "+m+" mins left";
 },1000);
 
-/* lightbox */
+/* PETALS */
+for(let i=0;i<25;i++){
+ let p=document.createElement("div");
+ p.className="petal";
+ p.innerHTML="🌸";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration=(4+Math.random()*5)+"s";
+ document.body.appendChild(p);
+}
+
+/* MUSIC */
+function toggleMusic(){
+ const m=document.getElementById("music");
+ m.paused ? m.play() : m.pause();
+}
+
+/* LIGHTBOX */
 function openImg(img){
  lightbox.style.display="flex";
  lightimg.src=img.src;
 }
 
-/* smooth reveal */
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{
-  if(e.isIntersecting) e.target.classList.add("active");
- });
-});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-/* fewer petals */
-for(let i=0;i<8;i++){
- let p=document.createElement("div");
- p.className="petal";
- p.innerHTML="🌸";
- p.style.left=Math.random()*100+"vw";
- p.style.animationDuration=(6+Math.random()*4)+"s";
- document.body.appendChild(p);
-}
-
-/* toggle music */
-function toggleMusic(){
- music.paused?music.play():music.pause();
-}
-
-/* save wishes */
+/* WISHES SAVE (FIXED) */
 function sendWish(){
- const name=guestName.value;
- const msg=guestMessage.value;
- if(!name||!msg) return;
 
- fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
-  method:"POST",
-  body:JSON.stringify({name:name,message:msg})
+ const name=document.getElementById("guestName").value;
+ const message=document.getElementById("guestMessage").value;
+
+ if(!name || !message){
+   alert("Please fill both fields ❤️");
+   return;
+ }
+
+ fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL",{
+   method:"POST",
+   body:JSON.stringify({ name:name, message:message })
  });
+
+ alert("Thank you for your blessings ❤️");
 
  guestName.value="";
  guestMessage.value="";
-
- thanks.style.display="block";
- setTimeout(()=>thanks.style.display="none",3000);
 }
+
 </script>
 
 </body>
