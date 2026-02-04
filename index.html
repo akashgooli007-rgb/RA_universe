@@ -9,31 +9,49 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+
 body{
   font-family:Poppins;
   background:linear-gradient(135deg,#fff5f8,#fffaf2);
   overflow-x:hidden;
   color:#333;
 }
+
+/* NAV */
 nav{
   position:fixed;
   top:0;width:100%;
   display:flex;justify-content:center;
   gap:25px;
   padding:15px;
-  background:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.75);
   backdrop-filter:blur(10px);
   z-index:99;
 }
 nav a{color:#b76e79;text-decoration:none;font-weight:500}
 
-section{padding:100px 20px;text-align:center}
+/* SECTIONS */
+section{
+  padding:100px 20px;
+  text-align:center;
+}
+
+/* smooth scroll animation */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .9s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
 
 h1,h2,h3{font-family:'Playfair Display'}
 
 .glass{
   max-width:850px;margin:auto;
-  background:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.75);
   backdrop-filter:blur(14px);
   padding:35px;border-radius:25px;
   box-shadow:0 10px 40px rgba(0,0,0,.12);
@@ -48,7 +66,7 @@ h1,h2,h3{font-family:'Playfair Display'}
 }
 .overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero-content{z-index:2}
-.hero h1{font-size:65px}
+.hero h1{font-size:60px}
 
 /* BUTTON */
 .btn{
@@ -60,10 +78,10 @@ h1,h2,h3{font-family:'Playfair Display'}
 /* SLIDER */
 .slider{display:flex;overflow-x:auto}
 .slider img{
-  height:250px;margin:10px;border-radius:20px;
+  height:240px;margin:10px;border-radius:20px;
   cursor:pointer;transition:.3s
 }
-.slider img:hover{transform:scale(1.08)}
+.slider img:hover{transform:scale(1.06)}
 
 /* LIGHTBOX */
 #lightbox{
@@ -73,15 +91,28 @@ h1,h2,h3{font-family:'Playfair Display'}
 }
 #lightbox img{max-height:85%}
 
-/* PETALS */
-.petal{position:fixed;top:-10px;font-size:18px;animation:fall linear infinite}
+/* PETALS (reduced) */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:16px;
+  animation:fall linear infinite
+}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
 
 /* MUSIC BUTTON */
 .music-btn{
   position:fixed;bottom:20px;right:20px;
   background:#b76e79;color:white;border:none;
-  width:55px;height:55px;border-radius:50%;font-size:20px
+  width:50px;height:50px;border-radius:50%;font-size:18px
+}
+
+/* THANK YOU MESSAGE */
+#thanks{
+  margin-top:12px;
+  color:#b76e79;
+  font-weight:500;
+  display:none;
 }
 
 footer{background:#b76e79;color:white;padding:35px}
@@ -97,7 +128,8 @@ footer{background:#b76e79;color:white;padding:35px}
 <a href="#wishes">Blessings</a>
 </nav>
 
-<audio id="music" loop>
+<!-- MUSIC (auto 40%) -->
+<audio id="music" autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -113,18 +145,18 @@ footer{background:#b76e79;color:white;padding:35px}
 </section>
 
 <!-- STORY -->
-<section id="story">
+<section id="story" class="reveal">
 <div class="glass">
 <h2>Our Story</h2>
 What began as a simple hello turned into endless smiles,
 comfort and love. With family blessings and destiny’s magic,
 we discovered we were meant for each other.
-<br><br><b>And one beautiful day… She Said YES 💍</b>
+<br><br><b>She Said YES 💍</b>
 </div>
 </section>
 
 <!-- EVENTS -->
-<section id="events">
+<section id="events" class="reveal">
 <div class="glass">
 <h2>Wedding Events</h2>
 <h3>🌼 Reception</h3>
@@ -132,14 +164,11 @@ April 5 • 6:30 PM<br>Dinner 7:30 PM
 <br><br>
 <h3>💒 Wedding</h3>
 April 6 • 10:34 AM<br>Lunch 12:30 PM
-<br><br>
-<a class="btn" href="https://maps.google.com">Venue Map</a>
-<a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
 </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery">
+<section id="gallery" class="reveal">
 <h2>Memories</h2>
 <div class="slider">
 <img src="photos/1.jpg" onclick="openImg(this)">
@@ -151,18 +180,18 @@ April 6 • 10:34 AM<br>Lunch 12:30 PM
 </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'">
 <img id="lightimg">
 </div>
 
 <!-- WISHES -->
-<section id="wishes">
+<section id="wishes" class="reveal">
 <div class="glass">
 <h2>Send Your Blessings ❤️</h2>
-<input id="name" placeholder="Your Name"><br><br>
-<textarea id="msg" placeholder="Your message"></textarea><br><br>
+<input id="name" placeholder="Your Name" style="padding:10px;width:80%;border-radius:10px"><br><br>
+<textarea id="msg" placeholder="Your message" style="padding:10px;width:80%;border-radius:10px"></textarea><br><br>
 <button class="btn" onclick="sendWish()">Send Wish</button>
+<p id="thanks">Thank you for your blessings ❤️</p>
 </div>
 </section>
 
@@ -172,34 +201,36 @@ Made with ❤️ by Akash & Ramya
 
 <script>
 
+/* music volume */
+const music=document.getElementById("music");
+music.volume=0.4;
+
 /* TYPEWRITER */
 const t="She Said Yes 💍";
 let i=0;
-(function type(){ if(i<t.length){ document.getElementById("type").innerHTML+=t[i++]; setTimeout(type,80)}})();
+(function type(){ if(i<t.length){ typewriter.innerHTML+=t[i++]; setTimeout(type,70)}})();
 
 /* COUNTDOWN */
 const d=new Date("April 6, 2026 10:34:00").getTime();
 setInterval(()=>{
- let n=new Date().getTime(), diff=d-n;
- let day=Math.floor(diff/(1000*60*60*24));
- let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
- let min=Math.floor((diff%(1000*60*60))/(1000*60));
- countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
+ let diff=d-new Date().getTime();
+ let day=Math.floor(diff/86400000);
+ countdown.innerHTML=day+" days to go";
 },1000);
 
-/* PETALS */
-for(let i=0;i<25;i++){
+/* FEWER PETALS */
+for(let i=0;i<8;i++){
  let p=document.createElement("div");
- p.className="petal"; p.innerHTML="🌸";
+ p.className="petal";
+ p.innerHTML="🌸";
  p.style.left=Math.random()*100+"vw";
- p.style.animationDuration=(4+Math.random()*5)+"s";
+ p.style.animationDuration=(6+Math.random()*4)+"s";
  document.body.appendChild(p);
 }
 
-/* MUSIC */
+/* MUSIC TOGGLE */
 function toggleMusic(){
- let m=document.getElementById("music");
- m.paused?m.play():m.pause();
+ music.paused?music.play():music.pause();
 }
 
 /* LIGHTBOX */
@@ -208,30 +239,32 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* WISHES TO GOOGLE SHEET */
+/* SMOOTH SCROLL REVEAL */
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting) e.target.classList.add("active");
+ });
+});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* SAVE WISHES (NO ALERT, AUTO RESET) */
 function sendWish(){
+ const user=name.value;
+ const message=msg.value;
+ if(!user||!message) return;
+
  fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
  method:"POST",
- body:JSON.stringify({
- name:name.value,
- message:msg.value
- })
+ body:JSON.stringify({name:user,message:message})
  });
- alert("Thank you for your blessings ❤️");
+
+ name.value="";
+ msg.value="";
+
+ thanks.style.display="block";
+ setTimeout(()=>thanks.style.display="none",3000);
 }
 
-/* CONFETTI */
-setTimeout(()=>{for(let i=0;i<50;i++){
- let c=document.createElement("div");
- c.style.position="fixed";
- c.style.left=Math.random()*100+"vw";
- c.style.top="-10px";
- c.innerHTML="✨";
- c.style.animation="fall 3s linear";
- document.body.appendChild(c);
-}},500);
-
 </script>
-
 </body>
 </html>
