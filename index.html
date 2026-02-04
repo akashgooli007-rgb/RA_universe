@@ -28,28 +28,17 @@ nav{
   backdrop-filter:blur(10px);
   z-index:99;
 }
+nav a{color:#b76e79;text-decoration:none;font-weight:500}
 
-nav a{
-  color:#b76e79;
-  text-decoration:none;
-  font-weight:500;
-}
-
-section{
-  padding:100px 20px;
-  text-align:center;
-}
-
+section{padding:100px 20px;text-align:center}
 h1,h2,h3{font-family:'Playfair Display'}
 
 /* GLASS CARD */
 .glass{
-  max-width:850px;
-  margin:auto;
+  max-width:850px;margin:auto;
   background:rgba(255,255,255,.7);
   backdrop-filter:blur(14px);
-  padding:35px;
-  border-radius:25px;
+  padding:35px;border-radius:25px;
   box-shadow:0 10px 40px rgba(0,0,0,.12);
 }
 
@@ -103,40 +92,17 @@ h1,h2,h3{font-family:'Playfair Display'}
   width:55px;height:55px;border-radius:50%;font-size:20px
 }
 
-/* ===== CLASSY WISH BOX ===== */
-.wish-box{
-  max-width:500px;
-  margin:auto;
+/* WISH BOX */
+.wish-box{max-width:500px;margin:auto}
+.wish-box input,.wish-box textarea{
+  width:100%;padding:14px;margin:10px 0;
+  border-radius:12px;border:1px solid #eee;
+  font-family:Poppins;font-size:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);outline:none
 }
+.wish-box textarea{min-height:110px;resize:none}
 
-.wish-box input,
-.wish-box textarea{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border-radius:12px;
-  border:1px solid #eee;
-  font-family:Poppins;
-  font-size:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);
-  outline:none;
-}
-
-.wish-box textarea{
-  min-height:110px;
-  resize:none;
-}
-
-.wish-box input:focus,
-.wish-box textarea:focus{
-  border-color:#b76e79;
-}
-
-footer{
-  background:#b76e79;
-  color:white;
-  padding:35px
-}
+footer{background:#b76e79;color:white;padding:35px}
 </style>
 </head>
 
@@ -183,7 +149,7 @@ we discovered we were meant for each other.
 <h2>Wedding Events</h2>
 
 <p style="margin-bottom:20px;font-weight:500;">
-📍 Venue: Nijagunara Kshetra Kalyana Mantapa, Basavanagudi
+📍 Venue: Sri Nijagunara Kshetra Kalyana Mantapa, Basavanagudi
 </p>
 
 <h3>🌼 Reception</h3>
@@ -200,7 +166,7 @@ April 6 • 10:34 AM<br>Lunch 12:30 PM
 </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALLERY (5 removed) -->
 <section id="gallery">
 <h2>Memories</h2>
 <div class="slider">
@@ -220,10 +186,8 @@ April 6 • 10:34 AM<br>Lunch 12:30 PM
 <section id="wishes">
 <div class="glass wish-box">
 <h2>Send Your Wishes ❤️</h2>
-
 <input id="name" placeholder="Your Name">
 <textarea id="msg" placeholder="Write your wishes..."></textarea>
-
 <button class="btn" onclick="sendWish()">Send Wish</button>
 </div>
 </section>
@@ -250,7 +214,7 @@ let i=0;
 /* COUNTDOWN */
 const d=new Date("April 6, 2026 10:34:00").getTime();
 setInterval(()=>{
- let n=new Date().getTime(), diff=d-n;
+ let diff=d-new Date().getTime();
  let day=Math.floor(diff/(1000*60*60*24));
  let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
  let min=Math.floor((diff%(1000*60*60))/(1000*60));
@@ -279,13 +243,21 @@ function openImg(img){
  lightimg.src=img.src;
 }
 
-/* SAVE WISHES */
+/* FIXED NAME SAVING */
 function sendWish(){
+ const guestName=document.getElementById("name").value;
+ const guestMsg=document.getElementById("msg").value;
+ if(!guestName||!guestMsg) return;
+
  fetch("https://script.google.com/macros/s/AKfycbzURaVfH396TSs9OD2yi5eiIJaxqGjwtMNt362PaDoCvxrdXe2AhrVybiiPz9VJx8Q9/exec",{
- method:"POST",
- body:JSON.stringify({name:name.value,message:msg.value})
+   method:"POST",
+   body:JSON.stringify({name:guestName,message:guestMsg})
  });
+
  alert("Thank you for your wishes ❤️");
+
+ document.getElementById("name").value="";
+ document.getElementById("msg").value="";
 }
 
 </script>
