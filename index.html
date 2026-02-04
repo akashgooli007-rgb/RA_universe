@@ -146,7 +146,7 @@ footer{
 <a href="#story">Story</a>
 <a href="#events">Events</a>
 <a href="#gallery">Gallery</a>
-<a href="#wishes">Blessings</a>
+<a href="#wishes">Wishes</a>
 </nav>
 
 <!-- MUSIC -->
@@ -219,10 +219,10 @@ April 6 • 10:34 AM<br>Lunch 12:30 PM
 <!-- WISHES -->
 <section id="wishes">
 <div class="glass wish-box">
-<h2>Send Your Blessings ❤️</h2>
+<h2>Send Your Wishes ❤️</h2>
 
 <input id="name" placeholder="Your Name">
-<textarea id="msg" placeholder="Write your blessing..."></textarea>
+<textarea id="msg" placeholder="Write your wishes..."></textarea>
 
 <button class="btn" onclick="sendWish()">Send Wish</button>
 </div>
@@ -257,7 +257,7 @@ setInterval(()=>{
  countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
 },1000);
 
-/* FEWER PETALS */
+/* PETALS */
 for(let i=0;i<6;i++){
  let p=document.createElement("div");
  p.className="petal";
@@ -285,7 +285,7 @@ function sendWish(){
  method:"POST",
  body:JSON.stringify({name:name.value,message:msg.value})
  });
- alert("Thank you for your blessings ❤️");
+ alert("Thank you for your wishes ❤️");
 }
 
 </script>
