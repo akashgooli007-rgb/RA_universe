@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Akash ❤️ Ramya Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+  font-family:Poppins;
+  background:linear-gradient(135deg,#fff5f8,#fffaf2);
+  overflow-x:hidden;
+  color:#333;
+}
+nav{
+  position:fixed;
+  top:0;width:100%;
+  display:flex;justify-content:center;
+  gap:25px;
+  padding:15px;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(10px);
+  z-index:99;
+}
+nav a{color:#b76e79;text-decoration:none;font-weight:500}
+
+section{padding:100px 20px;text-align:center}
+
+h1,h2,h3{font-family:'Playfair Display'}
+
+.glass{
+  max-width:850px;margin:auto;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(14px);
+  padding:35px;border-radius:25px;
+  box-shadow:0 10px 40px rgba(0,0,0,.12);
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url("photos/cover.jpg") center/cover;
+  display:flex;align-items:center;justify-content:center;
+  color:white;text-align:center;position:relative
+}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.hero-content{z-index:2}
+.hero h1{font-size:65px}
+
+/* BUTTON */
+.btn{
+  background:#b76e79;color:white;
+  padding:12px 30px;border-radius:30px;
+  display:inline-block;margin:8px;text-decoration:none
+}
+
+/* SLIDER */
+.slider{display:flex;overflow-x:auto}
+.slider img{
+  height:250px;margin:10px;border-radius:20px;
+  cursor:pointer;transition:.3s
+}
+.slider img:hover{transform:scale(1.08)}
+
+/* LIGHTBOX */
+#lightbox{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;align-items:center
+}
+#lightbox img{max-height:85%}
+
+/* PETALS */
+.petal{position:fixed;top:-10px;font-size:18px;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;bottom:20px;right:20px;
+  background:#b76e79;color:white;border:none;
+  width:55px;height:55px;border-radius:50%;font-size:20px
+}
+
+footer{background:#b76e79;color:white;padding:35px}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#story">Story</a>
+<a href="#events">Events</a>
+<a href="#gallery">Gallery</a>
+<a href="#wishes">Blessings</a>
+</nav>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<!-- HERO -->
+<section class="hero">
+<div class="overlay"></div>
+<div class="hero-content">
+<h1 id="type"></h1>
+<h2>Akash ❤️ Ramya</h2>
+<div id="countdown"></div>
+</div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+<div class="glass">
+<h2>Our Story</h2>
+What began as a simple hello turned into endless smiles,
+comfort and love. With family blessings and destiny’s magic,
+we discovered we were meant for each other.
+<br><br><b>And one beautiful day… She Said YES 💍</b>
+</div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+<div class="glass">
+<h2>Wedding Events</h2>
+<h3>🌼 Reception</h3>
+April 5 • 6:30 PM<br>Dinner 7:30 PM
+<br><br>
+<h3>💒 Wedding</h3>
+April 6 • 10:34 AM<br>Lunch 12:30 PM
+<br><br>
+<a class="btn" href="https://maps.google.com">Venue Map</a>
+<a class="btn" href="https://wa.me/91XXXXXXXXXX">RSVP</a>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h2>Memories</h2>
+<div class="slider">
+<img src="photos/1.jpg" onclick="openImg(this)">
+<img src="photos/2.jpg" onclick="openImg(this)">
+<img src="photos/3.jpg" onclick="openImg(this)">
+<img src="photos/4.jpg" onclick="openImg(this)">
+<img src="photos/5.jpg" onclick="openImg(this)">
+<img src="photos/6.jpg" onclick="openImg(this)">
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="lightimg">
+</div>
+
+<!-- WISHES -->
+<section id="wishes">
+<div class="glass">
+<h2>Send Your Blessings ❤️</h2>
+<input id="name" placeholder="Your Name"><br><br>
+<textarea id="msg" placeholder="Your message"></textarea><br><br>
+<button class="btn" onclick="sendWish()">Send Wish</button>
+</div>
+</section>
+
+<footer>
+Made with ❤️ by Akash & Ramya
+</footer>
+
+<script>
+
+/* TYPEWRITER */
+const t="She Said Yes 💍";
+let i=0;
+(function type(){ if(i<t.length){ document.getElementById("type").innerHTML+=t[i++]; setTimeout(type,80)}})();
+
+/* COUNTDOWN */
+const d=new Date("April 6, 2026 10:34:00").getTime();
+setInterval(()=>{
+ let n=new Date().getTime(), diff=d-n;
+ let day=Math.floor(diff/(1000*60*60*24));
+ let hr=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+ let min=Math.floor((diff%(1000*60*60))/(1000*60));
+ countdown.innerHTML=day+"d "+hr+"h "+min+"m left";
+},1000);
+
+/* PETALS */
+for(let i=0;i<25;i++){
+ let p=document.createElement("div");
+ p.className="petal"; p.innerHTML="🌸";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration=(4+Math.random()*5)+"s";
+ document.body.appendChild(p);
+}
+
+/* MUSIC */
+function toggleMusic(){
+ let m=document.getElementById("music");
+ m.paused?m.play():m.pause();
+}
+
+/* LIGHTBOX */
+function openImg(img){
+ lightbox.style.display="flex";
+ lightimg.src=img.src;
+}
+
+/* WISHES TO GOOGLE SHEET */
+function sendWish(){
+ fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL",{
+ method:"POST",
+ body:JSON.stringify({
+ name:name.value,
+ message:msg.value
+ })
+ });
+ alert("Thank you for your blessings ❤️");
+}
+
+/* CONFETTI */
+setTimeout(()=>{for(let i=0;i<50;i++){
+ let c=document.createElement("div");
+ c.style.position="fixed";
+ c.style.left=Math.random()*100+"vw";
+ c.style.top="-10px";
+ c.innerHTML="✨";
+ c.style.animation="fall 3s linear";
+ document.body.appendChild(c);
+}},500);
+
+</script>
+
+</body>
+</html>
